@@ -6856,7 +6856,10 @@ fieldset:disabled .btn {
     background-color: #fff !important;
 }
 .bg-white {
-    background-color: #000 !important;
+    background-color: #fff !important;
+}
+.bg-nav-grey {
+    background-color: #e6e6e6 !important;
 }
 .bg-transparent {
     background-color: rgba(0, 0, 0, 0) !important;

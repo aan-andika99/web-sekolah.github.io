@@ -16,7 +16,7 @@
                                             class="d-inline-block border border-white rounded text-primary fw-semi-bold py-1 px-3 animated slideInDown">
                                             {{ $list['keterangan'] }} </p>
                                         <h1 class="display-1 mb-4 animated slideInDown"></h1>
-                                        <a href="" class="btn btn-success py-3 px-5 animated slideInDown">Daftar Segera</a>
+                                        <a href="{{ url('/daftar') }}" class="btn btn-success py-3 px-5 animated slideInDown">Daftar Segera</a>
                                     </div>
                                 </div>
                             </div>

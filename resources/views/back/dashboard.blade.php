@@ -13,7 +13,15 @@
                       <div class="d-flex align-items-end row">
                         <div class="col-sm-7">
                           <div class="card-body">
-                            <h5 class="card-title text-primary">Selamat Datang <b>{{Auth::user()->name}}</b></h5>
+                            @can('isSiswa')
+                              <h5 class="card-title text-primary">Selamat Datang <b>{{Auth::user()->name}}</b></h5>
+                              <h6 class="card-title text-seccondary">Mohon Isi Data Pendaftaran, Dan Cek Secara Berkala Untuk Menghindari Kesalahan Data Diri Anda</h6>
+                            @elsecan('isGuru')
+                              <h5 class="card-title text-primary">Selamat Datang <b>{{Auth::user()->name}}</b></h5>
+                            @elsecan('isAdmin')
+                              <h5 class="card-title text-primary">Anda Login Sebagai <b>{{Auth::user()->name}}</b></h5>
+                            @endcan
+
                           </div>
                         </div>
                         <div class="col-sm-5 text-center text-sm-left">

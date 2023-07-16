@@ -50,81 +50,22 @@
           </div>
           <div class="menu-inner-shadow"></div>
           <ul class="menu-inner py-1">
-            <li class="menu-item {{ request()->is('dashboard') ? 'active' : ''}}">
-              <a href="{{ url('dashboard') }}" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-home-circle"></i>
-                <div data-i18n="Analytics">Dashboard</div>
-              </a>
-            </li>
             {{-- @can('isSiswa')
             @elsecan('isGuru')
             @elsecan('isAdmin')
             @endcan --}}
 
-            
-            <li class="menu-header small text-uppercase"><span class="menu-header-text">Pendaftaran</span></li>
-            <li class="menu-item {{ request()->is('pendaftaran') ? 'active' : ''}}">
-              <a href="{{ url('pendaftaran') }}" class="menu-link">
+           <li class="menu-item {{ request()->is('profile') ? 'active' : ''}}">
+              <a href="{{ url('profile') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-book"></i>
-                <div data-i18n="Form Elements">Pendaftaran</div>
+                <div data-i18n="Form Elements">Umum</div>
               </a>
-              <li class="menu-item {{ request()->is('data_siswa') ? 'active' : ''}}">
-                <a href="{{ url('data_siswa') }}" class="menu-link">
+              <li class="menu-item {{ request()->is('security') ? 'active' : ''}}">
+                <a href="{{ url('security') }}" class="menu-link">
                   <i class="menu-icon tf-icons bx bx-user"></i>
-                  <div data-i18n="Basic Inputs">Data Siswa</div>
+                  <div data-i18n="Basic Inputs">Keamanan</div>
                 </a>
               </li>
-              <li class="menu-item {{ request()->is('data_orangtua') ? 'active' : ''}}">
-                <a href="{{  url('data_orangtua') }}" class="menu-link">
-                  <i class="menu-icon tf-icons"><iconify-icon icon="bx:male-female"></iconify-icon></i>
-                  <div data-i18n="Input groups">Data Orangtua</div>
-                </a>
-              </li>
-              <li class="menu-item {{ request()->is('data_pendukung') ? 'active' : ''}}">
-                <a href="{{ url('data_pendukung') }}" class="menu-link">
-                  <i class="menu-icon tf-icons bx bx-file"></i>
-                  <div data-i18n="Input groups">Berkas Pendukung</div>
-                </a>
-              </li>
-              <li class="menu-item {{ request()->is('validasi') ? 'active' : ''}}">
-                <a href="{{ url('validasi') }}" class="menu-link">
-                  <i class="menu-icon tf-icons bx bx-check-square"></i>
-                  <div data-i18n="Input groups">Validasi</div>
-                </a>
-              </li>
-            </li>
-            <li class="menu-header small text-uppercase"><span class="menu-header-text">Cetak Berkas</span></li>
-            <li class="menu-item">
-              <a href="javascript:void(0);" class="menu-link menu-toggle">
-                <div data-i18n="Form Elements">Pendaftaran</div>
-              </a>
-              <ul class="menu-sub">
-                <li class="menu-item {{ request()->is('data_siswa') ? 'active' : ''}}">
-                  <a href="{{ url('data_siswa') }}" class="menu-link">
-                    <div data-i18n="Basic Inputs">Data Siswa</div>
-                  </a>
-                </li>
-                <li class="menu-item {{ request()->is('data_orangtua') ? 'active' : ''}}">
-                  <a href="{{  url('data_orangtua') }}" class="menu-link">
-                    <div data-i18n="Input groups">Data Orangtua</div>
-                  </a>
-                </li>
-                <li class="menu-item {{ request()->is('data_pendukung') ? 'active' : ''}}">
-                  <a href="{{ url('data_pendukung') }}" class="menu-link">
-                    <div data-i18n="Input groups">Berkas Pendukung</div>
-                  </a>
-                </li>
-                <li class="menu-item">
-                  <a href="forms-input-groups.html" class="menu-link">
-                    <div data-i18n="Input groups">Validasi</div>
-                  </a>
-                </li>
-                <li class="menu-item {{ request()->is('daftar_guru') ? 'active' : ''}}">
-                  <a href="{{ url('daftar_guru') }}" class="menu-link">
-                    <div data-i18n="Input groups">Daftar Guru</div>
-                  </a>
-                </li>
-              </ul>
             </li>
           </ul>
         </aside>

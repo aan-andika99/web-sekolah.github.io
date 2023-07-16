@@ -84,13 +84,18 @@ Route::get('actionlogout', [LoginController::class, 'actionlogout'])->name('acti
 // Register
 Route::get('/daftar', [RegisterController::class, 'register'])->name('register');
 Route::post('/register/action', [RegisterController::class, 'actionregister'])->name('actionregister');
+Route::post('/daftar_guru/action', [RegisterController::class, 'actionregisterGuru'])->name('actionregisterGuru');
+// Mail
+Route::get('register/verify/{verify_key}', [RegisterController::class, 'verify'])->name('verify');
 
 // Admin
 Route::get('data_siswa', [AdminController::class, 'siswa'])->name('siswa')->middleware('auth');
+Route::get('profile', [AdminController::class, 'profile'])->name('profile')->middleware('auth');
 Route::get('data_orangtua', [AdminController::class, 'orangtua'])->name('orangtua')->middleware('auth');
 Route::get('data_pendukung', [AdminController::class, 'berkas'])->name('berkas')->middleware('auth');
 Route::get('validasi', [AdminController::class, 'validasi'])->name('validasi')->middleware('auth');
 Route::get('pendaftaran', [AdminController::class, 'pendaftaran'])->name('pendaftaran')->middleware('auth');
+Route::get('daftar_guru', [AdminController::class, 'daftar_guru'])->name('daftar_guru')->middleware('auth');
 
 
 // Route::get('/Forgot', function () {

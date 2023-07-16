@@ -14,6 +14,13 @@ class AdminController extends Controller
             "icon" => "Assets/img/icon.png"
         ]);
     }
+    public function profile()
+    {
+        return view('back.form_profile', [
+            "title" => "PKBM-Langgeng Ikhlas",
+            "icon" => "Assets/img/icon.png"
+        ]);
+    }
     public function orangtua()
     {
         return view('back.form-dataorangtua', [
@@ -45,6 +52,13 @@ class AdminController extends Controller
     public function validasi()
     {
         return view('back.validasi', [
+            "title" => "PKBM-Langgeng Ikhlas",
+            "icon" => "Assets/img/icon.png"
+        ]);
+    }
+    public function daftar_guru()
+    {
+        return view('back.form_daftarguru', [
             "title" => "PKBM-Langgeng Ikhlas",
             "icon" => "Assets/img/icon.png"
         ]);

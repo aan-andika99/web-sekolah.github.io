@@ -83,7 +83,7 @@
     <!-- Vendors JS -->
 
     <!-- Main JS -->
-    <script src="/Back/js/mainadmin.js"></script>
+    <script src="/Assets/js/mainadmin.js"></script>
 
     <!-- Page JS -->
 
