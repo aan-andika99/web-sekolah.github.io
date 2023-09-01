@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('tbl_hdepan', function (Blueprint $table) {
-            $table->id('id_tbl');
+            $table->id('id_tabel');
             $table->bigInteger('id_agenda')->unique();
 			$table->bigInteger('id_galeri')->unique();
 			$table->bigInteger('id_profile')->unique();

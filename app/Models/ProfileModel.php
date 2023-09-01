@@ -2,38 +2,30 @@
 
 namespace App\Models;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
 
-class User extends Authenticatable
+class ProfileModel extends Model
 {
-    use HasApiTokens, HasFactory, Notifiable;
-
-    /**
+    use HasFactory;
+ /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
      */
-    protected $table = 'users';
-    protected $primaryKey = 'id_user';
+    protected $table = 'profile_Sekolah';
+    protected $primaryKey = 'id_profile';
     protected $fillable = [
-        'fname',
-        'mname',
-        'lname',
-        'password',
-        'jenis_kelamin',
+        'nama_sekolah',
+        'telp',
         'no_hp',
-        'avatar',
-        'role',
         'email',
-        'avatar',
-        'verify_key',
-        'status',
-        'active',
+        'alamat',
+        'visi',
+        'misi',
+        'pendiri',
+        'sambutan',
+        'logo',
     ];
 
     /**

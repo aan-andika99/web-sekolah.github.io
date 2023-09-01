@@ -9,8 +9,7 @@
                   {{session('message')}}
               </div>
               @endif
-              
-              <form class="mb-3" action="{{ route('resetpassword') }}" method="POST">
+              <form class="mb-3" action="{{ route('recovery') }}" method="POST">
                 @csrf
                 <div class="mb-3">
                   <label for="email" class="form-label">Email</label>
@@ -19,11 +18,34 @@
                     class="form-control"
                     id="email"
                     name="email"
+                    value="{{ $user->email }}"
                     placeholder="Email"
-                    autofocus
+                    readonly
                   />
                 </div>
-                <button class="btn btn-primary d-grid w-100">Kirim Link Via Email</button>
+                <div class="mb-3">
+                  <label for="password" class="form-label">Password baru</label>
+                  <input
+                    type="password"
+                    class="form-control"
+                    id="password"
+                    name="password"
+                    placeholder="Password Baru"
+                    required
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="password" class="form-label">ulangi Password</label>
+                  <input
+                    type="password"
+                    class="form-control"
+                    id="password2"
+                    name="password2"
+                    placeholder="Ulangi Password"
+                    required
+                  />
+                </div>
+                <button class="btn btn-primary d-grid w-100">Simpan</button>
               </form>
               <div class="text-center">
                 <a href="{{ url('/login') }}" class="d-flex align-items-center justify-content-center">

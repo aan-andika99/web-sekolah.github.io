@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('profile_sekolah', function (Blueprint $table) {
             $table->id('id_profile');
             $table->string('nama_sekolah');
-            $table->bigInteger('telp');
-            $table->bigInteger('no_hp');
+            $table->bigInteger('telp')->nullable();
+            $table->bigInteger('no_hp')->nullable();
 			$table->string('email');
             $table->string('alamat');
 			$table->string('visi');

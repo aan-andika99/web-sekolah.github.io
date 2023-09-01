@@ -12,7 +12,7 @@
             <form id="formAuthentication" class="mb-3" action="{{ route('actionlogin') }}" method="POST">
               @csrf
               <div class="mb-3">
-                <label for="email" class="form-label">Email atau Username</label>
+                <label for="email" class="form-label">Email</label>
                 <input
                   type="text"
                   class="form-control"
@@ -25,7 +25,7 @@
               <div class="mb-3 form-password-toggle">
                 <div class="d-flex justify-content-between">
                   <label class="form-label" for="password">Password</label>
-                  <a href="{{ url('/Forgot') }}">
+                  <a href="{{ route('forgot') }}">
                     <small>Lupa Password?</small>
                   </a>
                 </div>

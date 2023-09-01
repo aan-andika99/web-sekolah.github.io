@@ -4,302 +4,191 @@
 <div class="content-wrapper">
   <!-- Content -->
 
-    <div class="container-xxl flex-grow-1 container-p-y">
-    <!-- Basic Layout & Basic with Icons -->
-    <div class="row">
-      <!-- Basic Layout -->
-      <div class="col-xxl">
-        <div class="card mb-4">
-          <div class="card-body">
-            <form>
-              <div class="row mb-3">
-                <label class="col-sm-2 col-form-label" for="nama-lengkap">Nama Lengkap</label>
-                <div class="col-sm-10">
-                  <input type="text" class="form-control" name="nama_lengkap" id="basic-default-name" placeholder="Masukkan Nama Lengkap" @required(true) />
-                </div>
-              </div>
-              <div class="row mb-3">
-                <label class="col-sm-2 col-form-label" for="jenis-kelamin">Jenis Kelamin</label>
-                <div class="col-sm-10">
-                    <input name="jenis_kelamin" class="form-check-input" type="radio" value="Laki-Laki" id="defaultRadio1" checked />
-                    <label class="form-check-label" for="defaultRadio1"> Laki-Laki </label>
-                    <input name="jenis_kelamin" class="form-check-input" type="radio" value="Perempuan" id="defaultRadio2" />
-                    <label class="form-check-label" for="defaultRadio2"> Perempuan </label>
-                </div>
-              </div>
-              <div class="row mb-3">
-                <label class="col-sm-2 col-form-label" for="tempat-lahir">tempat, tanggal lahir</label>
-                <div class="col-sm-5">
-                  <div class="input-group input-group-merge">
-                    <input type="text" id="tempat_lahir" name="tempat_lahir" class="form-control" placeholder="Masukkan Tempat Lahir" @required(true)/>
-                  </div>
-                </div>
-                <div class="col-sm-5">
-                  <div class="input-group input-group-merge">
-                    <input type="date" id="tanggal_lahir" name="tanggal_lahir" class="form-control" placeholder="Masukkan NISN" @required(true)/>
-                  </div>
-                </div>
-              </div>
-              <div class="row mb-3">
-                <label class="col-sm-2 col-form-label" for="agama">agama</label>
-                <div class="col-sm-10">
-                  <div class="input-group input-group-merge">
-                    <input type="text" id="agama" name="agama" class="form-control" placeholder="Masukkan agama" @required(true)/>
-                  </div>
-                </div>
-              </div>
-              <div class="row mb-3">
-                <label class="col-sm-2 col-form-label" for="nik">nik</label>
-                <div class="col-sm-10">
-                  <div class="input-group input-group-merge">
-                    <input type="text" id="nik" name="nik" class="form-control" placeholder="Masukkan nik" @required(true)/>
-                  </div>
-                </div>
-              </div>
-              <div class="row mb-3">
-                <label class="col-sm-2 col-form-label" for="sekolah asal">Data Sekolah Asal</label>
-                <div class="col-sm-5">
-                  <div class="input-group input-group-merge">
-                    <input type="text" id="nama_sekolah_asal" name="nama_sekolah_asal" class="form-control" placeholder="Masukkan Nama Sekolah Asal" @required(true)/>
-                  </div>
-                </div>
-                <div class="col-sm-5">
-                  <div class="input-group input-group-merge">
-                    <input type="text" id="npsn_sekolah_asal" name="npsn_sekolah_asal" class="form-control" placeholder="Masukkan NPSN Sekolah Asal" @required(true)/>
-                  </div>
-                </div>
-              </div>
-              <div class="row mb-3">
-                <label class="col-sm-2 col-form-label" for="nisn">nisn</label>
-                <div class="col-sm-4">
-                  <div class="input-group input-group-merge">
-                    <input type="text" id="nisn" name="nisn" class="form-control" placeholder="Masukkan NISN" @required(true)/>
-                  </div>
-                </div>
-                <label class="col-sm-2 col-form-label" for="nisn">nis</label>
-                <div class="col-sm-4">
-                  <div class="input-group input-group-merge">
-                    <input type="text" id="nis" name="nis" class="form-control" placeholder="Masukkan NIS" @required(true)/>
-                  </div>
-                </div>
-              </div>
-              <div class="row mb-3">
-                <label class="col-sm-2 col-form-label" for="n">nomor Telephone</label>
-                <div class="col-sm-4">
-                  <input type="text" id="no_telp" class="form-control phone-mask" placeholder="Jika Ada"  name="no_telp" />
-                </div>
-                <label class="col-sm-2 col-form-label" for="n">nomor hp</label>
-                <div class="col-sm-4">
-                  <input type="text" id="no_hp" class="form-control phone-mask" placeholder="6289142387645" value="62" name="no_hp" required/>
-                </div>
-              </div>
-              <div class="row mb-3">
-                <label class="col-sm-2 col-form-label" for="email">email</label>
-                <div class="col-sm-10">
-                  <input type="email" id="email" class="form-control phone-mask" value="{{Auth::user()->email}}" name="email" @readonly(true)/>
-                </div>
-              </div>
-              <div class="row mb-3">
-                <label class="col-sm-2 col-form-label" for="alamat">jalan</label>
-                <div class="col-sm-10">
-                  <textarea
-                    id="alamat"
-                    class="form-control"
-                    placeholder="Hi, Do you have a moment to talk Joe?"
-                    aria-label="Hi, Do you have a moment to talk Joe?"
-                    aria-describedby="basic-icon-default-message2"
-                  ></textarea>
-                </div>
-              </div>
-              <div class="row mb-3">
-                <label class="col-sm-2 col-form-label" for="provinsi">provinsi</label>
-                <div class="col-sm-10">
-                  <select name="provinsi" id="provinsi" class="form-control">
-                    <option type="text" id="provinsi" class="form-control phone-mask " name="provinsi"></option>
-                  </select>
-                </div>
-              </div>
-              <div class="row mb-3">
-                <label class="col-sm-2 col-form-label" for="kota">kota</label>
-                <div class="col-sm-10">
-                  <select name="kota" id="kota" class="form-control">
-                    <option type="text" id="kota" class="form-control phone-mask" name="kota"></option>
-                  </select>
-                </div>
-              </div>
-              <div class="row mb-3">
-                <label class="col-sm-2 col-form-label" for="kecamatan">kecamatan</label>
-                <div class="col-sm-4">
-                  <select name="kecamatan" id="kecamatan" class="form-control">
-                    <option type="text" id="kecamatan" class="form-control phone-mask" name="kecamatan"></option>
-                  </select>
-                </div>
-                <label class="col-sm-2 col-form-label" for="kelurahan">kelurahan</label>
-                <div class="col-sm-4">
-                  <select name="kelurahan" id="kelurahan" class="form-control">
-                    <option type="text" id="kelurahan" class="form-control phone-mask" name="kelurahan"></option>
-                  </select>
-                </div>
-              </div>
-              <div class="row justify-content-end">
-                <div class="col-sm-10">
-                  <button type="submit" class="btn btn-primary">Send</button>
-                </div>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
   <div class="container-xxl flex-grow-1 container-p-y">
     <!-- Basic Layout & Basic with Icons -->
-    <div class="row">
-      <!-- Basic Layout -->
-      <div class="col-xxl">
-        <div class="card mb-4">
-          <div class="card-body">
-            <form>
-              <div class="row mb-3">
-                <label class="col-sm-2 col-form-label" for="nama-lengkap">Nama Lengkap</label>
-                <div class="col-sm-10">
-                  <input type="text" class="form-control" name="nama_lengkap" id="basic-default-name" placeholder="Masukkan Nama Lengkap" @required(true) />
-                </div>
-              </div>
-              <div class="row mb-3">
-                <label class="col-sm-2 col-form-label" for="jenis-kelamin">Jenis Kelamin</label>
-                <div class="col-sm-10">
-                    <input name="jenis_kelamin" class="form-check-input" type="radio" value="Laki-Laki" id="defaultRadio1" checked />
-                    <label class="form-check-label" for="defaultRadio1"> Laki-Laki </label>
-                    <input name="jenis_kelamin" class="form-check-input" type="radio" value="Perempuan" id="defaultRadio2" />
-                    <label class="form-check-label" for="defaultRadio2"> Perempuan </label>
-                </div>
-              </div>
-              <div class="row mb-3">
-                <label class="col-sm-2 col-form-label" for="tempat-lahir">tempat, tanggal lahir</label>
-                <div class="col-sm-5">
-                  <div class="input-group input-group-merge">
-                    <input type="text" id="tempat_lahir" name="tempat_lahir" class="form-control" placeholder="Masukkan Tempat Lahir" @required(true)/>
+    <section id="ayah">
+      <div class="row">
+        <!-- Basic Layout -->
+        <div class="col-xxl">
+          <div class="card mb-4">
+            <div class="card-header d-flex align-items-center justify-content-between">
+              <h5 class="mb-0">Data Orang Tua : Ayah</h5>
+              <small class="text-muted float-end">Data Ayah Kandung</small>
+            </div>
+            <div class="card-body">
+              <form action="{{route('dataOrangtuaAyah')}}" method="POST">
+                @csrf
+                @if(session('message_ayah'))
+                  <div class="alert alert-success">
+                    {{session('message_ayah')}}
+                  </div>
+                @endif
+                <div class="row mb-3">
+                  <label class="col-sm-2 col-form-label" for="nama-lengkap">Nama Lengkap</label>
+                  <div class="col-sm-10">
+                    <input type="hidden" name="id_user" value="{{ Auth::user()->id_user }}">
+                    <input type="text" class="form-control" name="nama_ayah" id="basic-default-name" value="{{ $users->nama_ayah }}" placeholder="Masukkan Nama Lengkap"  onkeyup="this.value = this.value.toUpperCase()" @required(true) />
                   </div>
                 </div>
-                <div class="col-sm-5">
-                  <div class="input-group input-group-merge">
-                    <input type="date" id="tanggal_lahir" name="tanggal_lahir" class="form-control" placeholder="Masukkan NISN" @required(true)/>
+                <div class="row mb-3">
+                  <label class="col-sm-2 col-form-label" for="disabilitas_ayah">Berkebutuhan Khusus</label>
+                  <div class="col-sm-10">
+                    <select type="text" class="form-control" name="disabilitas_ayah" id="basic-default-name" placeholder="Masukkan Nama Lengkap" @required(true)>
+                      <option value="{{ $users->disabilitas_ayah }}">{{ $users->disabilitas_ayah }}</option>
+                      <option value="Ya">Ya</option>
+                      <option value="Tidak">Tidak</option>
+                    </select>
                   </div>
                 </div>
-              </div>
-              <div class="row mb-3">
-                <label class="col-sm-2 col-form-label" for="agama">agama</label>
-                <div class="col-sm-10">
-                  <div class="input-group input-group-merge">
-                    <input type="text" id="agama" name="agama" class="form-control" placeholder="Masukkan agama" @required(true)/>
+                <div class="row mb-3">
+                  <label class="col-sm-2 col-form-label" for="Pendidikan_ayah">Pendidikan</label>
+                  <div class="col-sm-10">
+                    <input type="text" id="pendidikan_ayah" name="pendidikan_ayah" value="{{ $users->pendidikan_ayah }}" class="form-control" placeholder="Pendidikan Terakhir                            " @required(true)/>
                   </div>
                 </div>
-              </div>
-              <div class="row mb-3">
-                <label class="col-sm-2 col-form-label" for="nik">nik</label>
-                <div class="col-sm-10">
-                  <div class="input-group input-group-merge">
-                    <input type="text" id="nik" name="nik" class="form-control" placeholder="Masukkan nik" @required(true)/>
+                <div class="row mb-3">
+                  <label class="col-sm-2 col-form-label" for="pekerjaan-ayah">Pekerjaan</label>
+                  <div class="col-sm-5">
+                    <div class="input-group input-group-merge">
+                      <input type="text" id="pekerjaan_ayah" name="pekerjaan_ayah" value="{{ $users->pekerjaan_ayah }}" class="form-control" placeholder="Masukkan Pekerjaan Ayah" @required(true)/>
+                    </div>
+                  </div>
+                  <div class="col-sm-5">
+                    <div class="input-group input-group-merge">
+                      <input type="number" id="penghasilan_ayah" name="penghasilan_ayah" value="{{ $users->penghasilan_ayah }}" class="form-control" placeholder="Penghasilan Ayah Perbulan - Contoh : 3000000" @required(true)/>
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div class="row mb-3">
-                <label class="col-sm-2 col-form-label" for="sekolah asal">Data Sekolah Asal</label>
-                <div class="col-sm-5">
-                  <div class="input-group input-group-merge">
-                    <input type="text" id="nama_sekolah_asal" name="nama_sekolah_asal" class="form-control" placeholder="Masukkan Nama Sekolah Asal" @required(true)/>
+                <div class="row justify-content-end">
+                  <div class="col-sm-10">
+                    <button type="submit" class="btn btn-primary">Send</button>
                   </div>
                 </div>
-                <div class="col-sm-5">
-                  <div class="input-group input-group-merge">
-                    <input type="text" id="npsn_sekolah_asal" name="npsn_sekolah_asal" class="form-control" placeholder="Masukkan NPSN Sekolah Asal" @required(true)/>
-                  </div>
-                </div>
-              </div>
-              <div class="row mb-3">
-                <label class="col-sm-2 col-form-label" for="nisn">nisn</label>
-                <div class="col-sm-4">
-                  <div class="input-group input-group-merge">
-                    <input type="text" id="nisn" name="nisn" class="form-control" placeholder="Masukkan NISN" @required(true)/>
-                  </div>
-                </div>
-                <label class="col-sm-2 col-form-label" for="nisn">nis</label>
-                <div class="col-sm-4">
-                  <div class="input-group input-group-merge">
-                    <input type="text" id="nis" name="nis" class="form-control" placeholder="Masukkan NIS" @required(true)/>
-                  </div>
-                </div>
-              </div>
-              <div class="row mb-3">
-                <label class="col-sm-2 col-form-label" for="n">nomor Telephone</label>
-                <div class="col-sm-4">
-                  <input type="text" id="no_telp" class="form-control phone-mask" placeholder="Jika Ada"  name="no_telp" />
-                </div>
-                <label class="col-sm-2 col-form-label" for="n">nomor hp</label>
-                <div class="col-sm-4">
-                  <input type="text" id="no_hp" class="form-control phone-mask" placeholder="6289142387645" value="62" name="no_hp" required/>
-                </div>
-              </div>
-              <div class="row mb-3">
-                <label class="col-sm-2 col-form-label" for="email">email</label>
-                <div class="col-sm-10">
-                  <input type="email" id="email" class="form-control phone-mask" value="{{Auth::user()->email}}" name="email" @readonly(true)/>
-                </div>
-              </div>
-              <div class="row mb-3">
-                <label class="col-sm-2 col-form-label" for="alamat">jalan</label>
-                <div class="col-sm-10">
-                  <textarea
-                    id="alamat"
-                    class="form-control"
-                    placeholder="Hi, Do you have a moment to talk Joe?"
-                    aria-label="Hi, Do you have a moment to talk Joe?"
-                    aria-describedby="basic-icon-default-message2"
-                  ></textarea>
-                </div>
-              </div>
-              <div class="row mb-3">
-                <label class="col-sm-2 col-form-label" for="provinsi">provinsi</label>
-                <div class="col-sm-10">
-                  <select name="provinsi" id="provinsi" class="form-control">
-                    <option type="text" id="provinsi" class="form-control phone-mask " name="provinsi"></option>
-                  </select>
-                </div>
-              </div>
-              <div class="row mb-3">
-                <label class="col-sm-2 col-form-label" for="kota">kota</label>
-                <div class="col-sm-10">
-                  <select name="kota" id="kota" class="form-control">
-                    <option type="text" id="kota" class="form-control phone-mask" name="kota"></option>
-                  </select>
-                </div>
-              </div>
-              <div class="row mb-3">
-                <label class="col-sm-2 col-form-label" for="kecamatan">kecamatan</label>
-                <div class="col-sm-4">
-                  <select name="kecamatan" id="kecamatan" class="form-control">
-                    <option type="text" id="kecamatan" class="form-control phone-mask" name="kecamatan"></option>
-                  </select>
-                </div>
-                <label class="col-sm-2 col-form-label" for="kelurahan">kelurahan</label>
-                <div class="col-sm-4">
-                  <select name="kelurahan" id="kelurahan" class="form-control">
-                    <option type="text" id="kelurahan" class="form-control phone-mask" name="kelurahan"></option>
-                  </select>
-                </div>
-              </div>
-              <div class="row justify-content-end">
-                <div class="col-sm-10">
-                  <button type="submit" class="btn btn-primary">Send</button>
-                </div>
-              </div>
-            </form>
+              </form>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </div>
+    </section>
+    <section id="ibu">
+      <div class="row">
+        <!-- Basic Layout -->
+        <div class="col-xxl">
+          <div class="card mb-4">
+            <div class="card-header d-flex align-items-center justify-content-between">
+              <h5 class="mb-0">Data Orang Tua : Ibu</h5>
+              <small class="text-muted float-end">Data Ibu Kandung</small>
+            </div>
+            <div class="card-body">
+              <form action="{{ route('dataOrangtuaIbu') }}" method="POST">
+                @csrf
+                @if(session('message_ibu'))
+                  <div class="alert alert-success">
+                    {{session('message_ibu')}}
+                  </div>
+                @endif
+                <div class="row mb-3">
+                  <label class="col-sm-2 col-form-label" for="nama-lengkap">Nama Lengkap</label>
+                  <div class="col-sm-10">
+                    <input type="hidden" name="id_user" value="{{ Auth::user()->id_user }}">
+                    <input type="text" class="form-control" name="nama_ibu" value="{{ $users->nama_ibu }}" id="basic-default-name" placeholder="Masukkan Nama Lengkap" @required(true) />
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <label class="col-sm-2 col-form-label" for="disabilitas_ayah">Berkebutuhan Khusus</label>
+                  <div class="col-sm-10">
+                    <select type="text" class="form-control" name="disabilitas_ibu" id="basic-default-name" placeholder="Masukkan Nama Lengkap" @required(true)>
+                      <option value="{{ $users->disabilitas_ibu }}">{{ $users->disabilitas_ibu }}</option>
+                      <option value="Ya">Ya</option>
+                      <option value="Tidak">Tidak</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <label class="col-sm-2 col-form-label" for="Pendidikan_ibu">Pendidikan</label>
+                  <div class="col-sm-10">
+                    <input type="text" id="pendidikan_ibu" name="pendidikan_ibu" value="{{ $users->pendidikan_ibu }}" class="form-control" placeholder="Pendidikan Terakhir                            " @required(true)/>
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <label class="col-sm-2 col-form-label" for="pekerjaan-ibu">Pekerjaan ibu</label>
+                  <div class="col-sm-5">
+                    <div class="input-group input-group-merge">
+                      <input type="text" id="pekerjaan_ibu" name="pekerjaan_ibu" value="{{ $users->pekerjaan_ibu }}" class="form-control" placeholder="Masukkan Pekerjaan ibu" @required(true)/>
+                    </div>
+                  </div>
+                  <div class="col-sm-5">
+                    <div class="input-group input-group-merge">
+                      <input type="number" id="penghasilan_ibu" name="penghasilan_ibu" value="{{ $users->penghasilan_ibu }}" class="form-control" placeholder="Penghasilan ibu Perbulan - Contoh : 3000000" @required(true)/>
+                    </div>
+                  </div>
+                </div>
+                <div class="row justify-content-end">
+                  <div class="col-sm-10">
+                    <button type="submit" class="btn btn-primary">Send</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="wali">
+      <div class="row">
+        <!-- Basic Layout -->
+        <div class="col-xxl">
+          <div class="card mb-4">
+            <div class="card-header d-flex align-items-center justify-content-between">
+              <h5 class="mb-0">Data Wali</h5>
+              <small class="text-muted float-end">Data Wali Murid</small>
+            </div>
+            <div class="card-body">
+              <form action="{{ route('dataOrangtuaWali') }}" method="POST">
+                @csrf
+                @if(session('message_wali'))
+                    <div class="alert alert-success">
+                      {{session('message_wali')}}
+                    </div>
+                  @endif
+                <div class="row mb-3">
+                  <label class="col-sm-2 col-form-label" for="nama-lengkap">Nama Lengkap</label>
+                  <input type="hidden" value="{{ Auth::user()->id_user }}" name="id_user">
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" name="nama_wali" id="basic-default-name" value="{{ $users->nama_wali }}" placeholder="Masukkan Nama Lengkap" @required(true) />
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <label class="col-sm-2 col-form-label" for="pekerjaan-wali">Pekerjaan wali</label>
+                  <div class="col-sm-5">
+                    <div class="input-group input-group-merge">
+                      <input type="text" id="pekerjaan_wali" name="pekerjaan_wali" value="{{ $users->pekerjaan_wali }}" class="form-control" placeholder="Masukkan Pekerjaan wali" @required(true)/>
+                    </div>
+                  </div>
+                  <div class="col-sm-5">
+                    <div class="input-group input-group-merge">
+                      <input type="number" id="penghasilan_wali" name="penghasilan_wali" value="{{ $users->penghasilan_wali }}"" class="form-control" placeholder="Penghasilan wali Perbulan - Contoh : 3000000" @required(true)/>
+                    </div>
+                  </div>
+                </div>
+                  <div class="row mb-3">
+                    <label class="col-sm-2 col-form-label" for="Pendidikan_wali">Pendidikan</label>
+                    <div class="col-sm-10">
+                      <input type="text" id="pendidikan_wali" name="pendidikan_wali" value="{{ $users->pendidikan_wali }}" class="form-control" placeholder="Pendidikan Terakhir                            " @required(true)/>
+                    </div>
+                  </div>
+                <div class="row justify-content-end">
+                  <div class="col-sm-10">
+                    <button type="submit" class="btn btn-primary">Send</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
 </div>
   <script src="Back/js/wilayah.js"></script>
   <!-- / Content -->

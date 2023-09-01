@@ -1,4 +1,4 @@
-{{ date_default_timezone_set('Asia/Jakarta'); }}
+{{-- {{ date_default_timezone_set('Asia/Jakarta'); }} --}}
 <!DOCTYPE html>
 <html
   lang="en"
@@ -39,7 +39,7 @@
       <div class="layout-container">
         <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
           <div class="app-brand demo">
-            <a href="" class="app-brand-link">
+            <a href="{{ url('dashboard') }}" class="app-brand-link">
               <span class="app-brand-logo demo">
                 <img src="{{ $icon }}" style="width:5%" alt="">
               </span>
@@ -56,76 +56,68 @@
                 <div data-i18n="Analytics">Dashboard</div>
               </a>
             </li>
-            {{-- @can('isSiswa')
-            @elsecan('isGuru')
-            @elsecan('isAdmin')
-            @endcan --}}
-
-            
-            <li class="menu-header small text-uppercase"><span class="menu-header-text">Pendaftaran</span></li>
-            <li class="menu-item {{ request()->is('pendaftaran') ? 'active' : ''}}">
-              <a href="{{ url('pendaftaran') }}" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-book"></i>
-                <div data-i18n="Form Elements">Pendaftaran</div>
-              </a>
+            @can('isSiswa')
+              @can('isProcess')
+              <li class="menu-header small text-uppercase"><span class="menu-header-text">Formulir Pendaftaran</span></li>
               <li class="menu-item {{ request()->is('data_siswa') ? 'active' : ''}}">
-                <a href="{{ url('data_siswa') }}" class="menu-link">
+                @can('isSiswa')
+                <a href="{{ route('user_siswa') }}" class="menu-link">
+                @elsecan('isAdmin')
+                <a href="{{ route('admin_siswa') }}" class="menu-link">
+                @endcan
                   <i class="menu-icon tf-icons bx bx-user"></i>
                   <div data-i18n="Basic Inputs">Data Siswa</div>
                 </a>
               </li>
-              <li class="menu-item {{ request()->is('data_orangtua') ? 'active' : ''}}">
-                <a href="{{  url('data_orangtua') }}" class="menu-link">
-                  <i class="menu-icon tf-icons"><iconify-icon icon="bx:male-female"></iconify-icon></i>
-                  <div data-i18n="Input groups">Data Orangtua</div>
-                </a>
-              </li>
-              <li class="menu-item {{ request()->is('data_pendukung') ? 'active' : ''}}">
-                <a href="{{ url('data_pendukung') }}" class="menu-link">
-                  <i class="menu-icon tf-icons bx bx-file"></i>
-                  <div data-i18n="Input groups">Berkas Pendukung</div>
-                </a>
-              </li>
-              <li class="menu-item {{ request()->is('validasi') ? 'active' : ''}}">
-                <a href="{{ url('validasi') }}" class="menu-link">
-                  <i class="menu-icon tf-icons bx bx-check-square"></i>
-                  <div data-i18n="Input groups">Validasi</div>
-                </a>
-              </li>
-            </li>
-            <li class="menu-header small text-uppercase"><span class="menu-header-text">Cetak Berkas</span></li>
-            <li class="menu-item">
-              <a href="javascript:void(0);" class="menu-link menu-toggle">
-                <div data-i18n="Form Elements">Pendaftaran</div>
-              </a>
-              <ul class="menu-sub">
-                <li class="menu-item {{ request()->is('data_siswa') ? 'active' : ''}}">
-                  <a href="{{ url('data_siswa') }}" class="menu-link">
-                    <div data-i18n="Basic Inputs">Data Siswa</div>
-                  </a>
-                </li>
+             
+                
                 <li class="menu-item {{ request()->is('data_orangtua') ? 'active' : ''}}">
                   <a href="{{  url('data_orangtua') }}" class="menu-link">
+                    <i class="menu-icon tf-icons"><iconify-icon icon="bx:male-female"></iconify-icon></i>
                     <div data-i18n="Input groups">Data Orangtua</div>
                   </a>
                 </li>
-                <li class="menu-item {{ request()->is('data_pendukung') ? 'active' : ''}}">
-                  <a href="{{ url('data_pendukung') }}" class="menu-link">
-                    <div data-i18n="Input groups">Berkas Pendukung</div>
+                <li class="menu-item {{ request()->is('berkas-siswa') ? 'active' : ''}}">
+                  <a href="{{ url('berkas-siswa') }}" class="menu-link">
+                    <i class="menu-icon tf-icons bx bx-book"></i>
+                    <div data-i18n="Form Elements">Berkas Pendukung</div>
                   </a>
                 </li>
-                <li class="menu-item">
-                  <a href="forms-input-groups.html" class="menu-link">
-                    <div data-i18n="Input groups">Validasi</div>
+                {{-- <li class="menu-item {{ request()->is('data_pendukung') ? 'active' : ''}}">
+                  <a href="{{ url('data_pendukung') }}" class="menu-link">
+                    <i class="menu-icon tf-icons bx bx-file"></i>
+                    <div data-i18n="Input groups">Berkas Pendukung</div>
+                  </a>
+                </li> --}}
+              </li>
+              @endcan
+            @elsecan('isGuru')
+            <li class="menu-item {{ request()->is('validasi') ? 'active' : ''}}">
+              <a href="{{ url('validasi') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-check-square"></i>
+                <div data-i18n="Input groups">Validasi</div>
+              </a>
+            </li>
+            @elsecan('isAdmin')
+                <li class="menu-item {{ request()->is('data_siswa') ? 'active' : ''}}">
+                  <a href="{{ url('data_siswa') }}" class="menu-link">
+                    <i class="menu-icon tf-icons bx bx-user-circle"></i>
+                    <div data-i18n="Basic Inputs">Data Siswa</div>
                   </a>
                 </li>
                 <li class="menu-item {{ request()->is('daftar_guru') ? 'active' : ''}}">
                   <a href="{{ url('daftar_guru') }}" class="menu-link">
-                    <div data-i18n="Input groups">Daftar Guru</div>
+                    <i class="menu-icon tf-icons bx bx-group"></i>
+                    <div data-i18n="Input groups ">Daftar Guru</div>
                   </a>
                 </li>
-              </ul>
-            </li>
+                <li class="menu-item {{ request()->is('profil_sekolah') ? 'active' : ''}}">
+                  <a href="{{ route('profil_sekolah') }}" class="menu-link">
+                    <i class="menu-icon tf-icons bx bxs-school"></i>
+                    <div data-i18n="Input groups ">Profil Sekolah</div>
+                  </a>
+                </li>
+            @endcan
           </ul>
         </aside>
         <div class="layout-page">
@@ -143,7 +135,7 @@
                 <li class="nav-item navbar-dropdown dropdown-user dropdown">
                   <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
                     <div class="avatar avatar-online">
-                      <img src="../assets/img/avatars/1.png" alt class="w-px-40 h-auto rounded-circle" />
+                      <img src="/Upload.FotoProfil/{{Auth::user()->avatar}}" alt class="w-px-40 h-px-80 rounded-circle" />
                     </div>
                   </a>
                   <ul class="dropdown-menu dropdown-menu-end">
@@ -152,12 +144,12 @@
                         <div class="d-flex">
                           <div class="flex-shrink-0 me-3">
                             <div class="avatar avatar-online">
-                              <img src="../assets/img/avatars/1.png" alt class="w-px-40 h-auto rounded-circle" />
+                              <img src="/Upload.FotoProfil/{{Auth::user()->avatar}}" alt class="w-px-40 h-auto rounded-circle" />
                             </div>
                           </div>
                           <div class="flex-grow-1">
-                            <span class="fw-semibold d-block">John Doe</span>
-                            <small class="text-muted">Admin</small>
+                            <span class="fw-semibold d-block">{{ Auth::user()->fname }} {{ Auth::user()->mname }} {{ Auth::user()->lname }}</span>
+                            <small class="text-muted">{{ Auth::user()->role }}</small>
                           </div>
                         </div>
                       </a>
@@ -166,9 +158,9 @@
                       <div class="dropdown-divider"></div>
                     </li>
                     <li>
-                      <a class="dropdown-item" href="{{ url('/profile') }}">
-                        <i class="bx bx-user me-2"></i>
-                        <span class="align-middle">My Profile</span>
+                      <a class="dropdown-item" href="{{ url('profile/setting') }}">
+                        <i class="bx bx-cog me-2"></i>
+                        <span class="align-middle">Pengaturan</span>
                       </a>
                     </li>
                     <li>
@@ -196,7 +188,8 @@
       </div>
       <div class="layout-overlay layout-menu-toggle"></div>
     </div>
-
+    <!-- Toast JS -->
+    <script src="/Assets/js/ui-toasts.js"></script>
     <script src="/Assets/vendor/libs/jquery/jquery.js"></script>
     <script src="/Assets/vendor/libs/popper/popper.js"></script>
     <script src="/Assets/vendor/js/bootstrap.js"></script>
@@ -204,8 +197,9 @@
     <script src="/Assets/vendor/js/menu.js"></script>
     <script src="/Assets/vendor/libs/apex-charts/apexcharts.js"></script>
     <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
-    <script src="/Assets/js/mainadmin.js"></script>
+    <script src="/Assets/js/main.js"></script>
     <script src="/Assets/js/dashboards-analytics.js"></script>
     <script async defer src="https://buttons.github.io/buttons.js"></script>
+    
   </body>
 </html>

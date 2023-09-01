@@ -9,19 +9,48 @@
               <form id="formAuthentication" class="mb-3" action="{{route('actionregister')}}" method="POST">
                 @csrf
                 <div class="mb-3">
-                  <label for="name" class="form-label">Username</label>
+                  <input type="hidden" name="status" value="pending">
+                  <label for="name" class="form-label">Nama Lengkap</label>
                   <input
                     type="text"
-                    class="form-control"
+                    class="form-control mb-3"
                     id="name"
-                    name="name"
-                    placeholder="Enter your username"
-                    autofocus
+                    name="fname"
+                    placeholder="Masukkan Nama Depan"
+                    autofocus required
+                  />
+                  <input
+                    type="text"
+                    class="form-control mb-3"
+                    id="name"
+                    name="mname"
+                    placeholder="Masukkan Nama Tengah Jika Ada"
+                    
+                  />
+                  <input
+                    type="text"
+                    class="form-control mb-3"
+                    id="name"
+                    name="lname"
+                    placeholder="Masukkan Nama Belakang"
+                    
                   />
                 </div>
                 <div class="mb-3">
                   <label for="email" class="form-label">Email</label>
-                  <input type="text" class="form-control" id="email" name="email" placeholder="Enter your email" />
+                  <input type="email" class="form-control" id="email" name="email" placeholder="example@gmail.com" required autofocus/>
+                </div>
+                <div class="mb-3">
+                  <label for="no_hp" class="form-label">No Hp</label>
+                  <input type="text" class="form-control" id="no_hp" name="no_hp" placeholder="Masukkan Nomor Hp" required/>
+                </div>
+                <div class="mb-3">
+                  <label for="jenis_kelamin" class="form-label">Jenis Kelamin</label>
+                  <select class="form-control" name="jenis_kelamin">
+                    <option value=" ">Pilih Jenis Kelamin</option>
+                    <option value="Laki-Laki">Laki-Laki</option>
+                    <option value="Perempuan">Perempuan</option>
+                  </select>
                 </div>
                 <div class="mb-3 form-password-toggle">
                   <label class="form-label" for="password">Password</label>
@@ -52,7 +81,7 @@
 
               <p class="text-center">
                 <span>Already have an account?</span>
-                <a href="{{ url('/Login') }}">
+                <a href="{{ url('/login') }}">
                   <span>Sign in instead</span>
                 </a>
               </p>

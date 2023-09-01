@@ -4,23 +4,23 @@
     <title>Verifikasi Akun</title>
 </head>
 <body>
-    <p>Halo <b>{{$details['name']}}</b>!</p>
+    <p>Halo <b>{{$details['fname']}} {{$details['mname']}} {{$details['lname']}}</b>!</p>
     <p>Berikut ini adalah Data Anda:</p>
     <table>
       <tr>
-        <td>Username</td>
+        <td>Nama Lengkap</td>
         <td>:</td>
-        <td>{{$details['name']}}</td>
+        <td>{{$details['fname']}} {{$details['mname']}} {{$details['lname']}}</td>
       </tr>
       <tr>
-        <td>Role</td>
+        <td>E-Mail</td>
         <td>:</td>
-        <td>{{$details['role']}}</td>
+        <td>{{$details['email']}}</td>
       </tr>
       <tr>
-        <td>Website</td>
+        <td>No Hp</td>
         <td>:</td>
-        <td>{{$details['website']}}</td>
+        <td>{{$details['no_hp']}}</td>
       </tr>
       <tr>
         <td>Tanggal Register</td>

@@ -31,7 +31,7 @@
                 <label class="col-sm-2 col-form-label" for="nisn">nisn</label>
                 <div class="col-sm-4">
                   <div class="input-group input-group-merge">
-                    <input type="text" id="nisn" name="nisn" class="form-control" placeholder="Masukkan NISN" @required(true)/>
+                    <input type="text" id="nisn" name="nisn" class="form-control" placeholder="Masukkan NISN"  @required(true)/>
                   </div>
                 </div>
                 <label class="col-sm-2 col-form-label" for="nisn">nis</label>
@@ -58,7 +58,7 @@
                 </div>
               </div>
               <div class="row mb-3">
-                <label class="col-sm-2 col-form-label" for="alamat">jalan</label>
+                <label class="col-sm-2 col-form-label" for="alamat">alamat lengkap</label>
                 <div class="col-sm-10">
                   <textarea
                     id="alamat"
@@ -110,6 +110,82 @@
       </div>
     </div>
   </div>
-  <script src="Back/js/wilayah.js"></script>
+  {{-- <script src="Back/js/wilayah.js"></script> --}}
+  <script>
+fetch(`https://aan-andika99.github.io/api-wilayah-indonesia/api/provinces.json`)
+    .then((response) => response.json())
+    .then((provinces) => {
+        var data = provinces;
+        var tampung = `<option>` + `<?php $users->provinsi ?> ` + `</option>`;
+        data.forEach((element) => {
+            tampung += `<option data-prov="${element.id}" value="${element.name}">${element.name}</option>`;
+        });
+        document.getElementById("provinsi").innerHTML = tampung;
+    });
+
+const selectProvinsi = document.getElementById("provinsi");
+const selectKota = document.getElementById("kota");
+const selectKecamatan = document.getElementById("kecamatan");
+const selectKelurahan = document.getElementById("kelurahan");
+
+selectProvinsi.addEventListener("change", (e) => {
+    var provinsi = e.target.options[e.target.selectedIndex].dataset.prov;
+    fetch(
+        `https://aan-andika99.github.io/api-wilayah-indonesia/api/regencies/${provinsi}.json`
+    )
+        .then((response) => response.json())
+        .then((regencies) => {
+            var data = regencies;
+            var tampung = `<option>Pilih</option>`;
+            document.getElementById("kota").innerHTML = "<option></option>";
+            document.getElementById("kecamatan").innerHTML =
+                "<option></option>";
+            document.getElementById("kelurahan").innerHTML =
+                "<option></option>";
+            data.forEach((element) => {
+                tampung += `<option data-prov="${element.id}" value="${element.name}">${element.name}</option>`;
+            });
+            document.getElementById("kota").innerHTML = tampung;
+        });
+});
+
+selectKota.addEventListener("change", (e) => {
+    var kota = e.target.options[e.target.selectedIndex].dataset.prov;
+    fetch(
+        `https://aan-andika99.github.io/api-wilayah-indonesia/api/districts/${kota}.json`
+    )
+        .then((response) => response.json())
+        .then((districts) => {
+            var data = districts;
+            var tampung = `<option>Pilih</option>`;
+            document.getElementById("kecamatan").innerHTML =
+                "<option></option>";
+            document.getElementById("kelurahan").innerHTML =
+                "<option></option>";
+            data.forEach((element) => {
+                tampung += `<option data-prov="${element.id}" value="${element.name}">${element.name}</option>`;
+            });
+            document.getElementById("kecamatan").innerHTML = tampung;
+        });
+});
+selectKecamatan.addEventListener("change", (e) => {
+    var kecamatan = e.target.options[e.target.selectedIndex].dataset.prov;
+    fetch(
+        `https://aan-andika99.github.io/api-wilayah-indonesia/api/villages/${kecamatan}.json`
+    )
+        .then((response) => response.json())
+        .then((villages) => {
+            var data = villages;
+            var tampung = `<option>Pilih</option>`;
+            document.getElementById("kelurahan").innerHTML =
+                "<option></option>";
+            data.forEach((element) => {
+                tampung += `<option data-prov="${element.id}" value="${element.name}">${element.name}</option>`;
+            });
+            document.getElementById("kelurahan").innerHTML = tampung;
+        });
+});
+
+  </script>
   <!-- / Content -->
 @endsection

@@ -1,13 +1,14 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
-use Session;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 use App\Mail\MailSend;
+use Illuminate\Support\Facades\Session;
 
 class RegisterController extends Controller
 
@@ -25,18 +26,25 @@ class RegisterController extends Controller
         $str = Str::random(100);
         
         $user = User::create([
-            'name' => $request->name,
+            'fname' => $request->fname,
+            'mname' => $request->mname,
+            'lname' => $request->lname,
             'email' => $request->email,
+            'no_hp' => $request->no_hp,
             'password' => Hash::make($request->password),
             'role' => $request->role,
+            'status' => $request->status,
             'jenis_kelamin' => $request->jenis_kelamin,
             'verify_key' => $str
         ]);
-
+       
         $details = [
-            'name' => $request->name,
-            'role' => $request->role,
-            'website' => 'www.ayongoding.com',
+            'fname' => $request->fname,
+            'mname' => $request->mname,
+            'lname' => $request->lname,
+            'email' => $request->email,
+            'no_hp' => $request->no_hp,
+            'jenis_kelamin' => $request->jenis_kelamin,
             'datetime' => date('Y-m-d H:i:s'),
             'url' => request()->getHttpHost().'/register/verify/'.$str
         ];
@@ -51,18 +59,27 @@ class RegisterController extends Controller
         $str = Str::random(100);
         
         $user = User::create([
-            'name' => $request->name,
+            'id_user' => $request->id_user,
+            'fname' => $request->fname,
+            'mname' => $request->mname,
+            'lname' => $request->lname,
             'email' => $request->email,
+            'no_hp' => $request->no_hp,
             'password' => Hash::make($request->password),
+            'status' => $request->status,
             'role' => $request->role,
             'jenis_kelamin' => $request->jenis_kelamin,
             'verify_key' => $str
         ]);
+     
 
         $details = [
-            'name' => $request->name,
-            'role' => $request->role,
-            'website' => 'www.ayongoding.com',
+            'fname' => $request->fname,
+            'mname' => $request->mname,
+            'lname' => $request->lname,
+            'email' => $request->email,
+            'no_hp' => $request->no_hp,
+            'jenis_kelamin' => $request->jenis_kelamin,
             'datetime' => date('Y-m-d H:i:s'),
             'url' => request()->getHttpHost().'/register/verify/'.$str
         ];
@@ -72,7 +89,7 @@ class RegisterController extends Controller
         Session::flash('message', 'Link verifikasi telah dikrim ke Email. Silahkan Cek Email untuk Mengaktifkan Akun');
         return redirect('daftar_guru');
     }
-    public function verify($verify_key)
+    public function verify($verify_key,Request $request)
     {
             $keyCheck = User::select('verify_key')
                         ->where('verify_key', $verify_key)
@@ -83,6 +100,7 @@ class RegisterController extends Controller
                 ->update([
                     'active' => 1
                 ]);
+
                 
                 return "Verifikasi Berhasil. Akun Anda sudah aktif.";
             }else{

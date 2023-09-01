@@ -2,9 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
+use Illuminate\Contracts\Session\Session as SessionSession;
 use Illuminate\Http\Request;
+use App\Mail\ResetPassword;
 use Illuminate\Support\Facades\Auth;
-use Session;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Str;
+
 
 class LoginController extends Controller
 {
@@ -19,20 +25,20 @@ class LoginController extends Controller
                 ]);
             }
         }
-
+    
+            
     public function actionlogin(Request $request)
     {
-        $data = [
-            'email' => $request->input('email'),
-            'password' => $request->input('password'),
-        ];
+        $credentials = $request->only('email', 'password');
 
-        if (Auth::Attempt($data)) {
-            return redirect('dashboard');
-        }else{
-            return redirect('login');
+        if (Auth::attempt($credentials)) {
+            // Authentication passed...
+            return redirect()->intended('dashboard'); // Redirect to dashboard or any other authenticated page
+        } else {
+            return redirect()->route('login')->with('error', 'Invalid credentials');
         }
     }
+    
 
     public function actionlogout()
     {

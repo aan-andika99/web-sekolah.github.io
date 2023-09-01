@@ -14,17 +14,29 @@ return new class extends Migration
         		
 Schema::create('tbl_wali', function (Blueprint $table) {
     $table->id('id_wali');
-    $table->string('nama_ayah');
-    $table->bigInteger('pekerjaan_ayah');
-    $table->integer('penghasilan_ayah');
-    $table->string('nama_ibu');
-    $table->string('disabilitas_ibu');
-    $table->string('pekerjaan_ibu');
-    $table->integer('penghasilan_ibu');
-    $table->string('nama_wali');
-    $table->integer('penghasilan_wali');
-    $table->string('pekerjaan_wali');
-    $table->bigInteger('id_users')->unique();
+
+    $table->string('nama_ayah',50)->nullable();
+    $table->string('disabilitas_ayah',5)->nullable();
+    $table->string('pekerjaan_ayah',25)->nullable();
+    $table->string('pendidikan_ayah',25)->nullable();
+    $table->bigInteger('penghasilan_ayah')->nullable();
+
+    $table->string('nama_ibu',50)->nullable();
+    $table->string('disabilitas_ibu',5)->nullable();
+    $table->string('pekerjaan_ibu',25)->nullable();
+    $table->string('pendidikan_ibu',25)->nullable();
+    $table->bigInteger('penghasilan_ibu')->nullable();
+
+    $table->string('nama_wali',50)->nullable();
+    $table->string('pekerjaan_wali',25)->nullable();
+    $table->string('pendidikan_wali',25)->nullable();
+    $table->bigInteger('penghasilan_wali')->nullable();
+    
+    $table->timestamp('created_at')->nullable();
+    $table->timestamp('updated_at')->nullable();
+    
+    $table->bigInteger('id_user')->unique();
+
 });
     }
 

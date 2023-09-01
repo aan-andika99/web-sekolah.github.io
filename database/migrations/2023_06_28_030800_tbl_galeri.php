@@ -13,8 +13,9 @@ return new class extends Migration
     {
         Schema::create('tbl_galeri', function (Blueprint $table) {
             $table->id('id_galeri');
-            $table->string('nama');
-            $table->bigInteger('no_hp');
+            $table->string('foto');
+            $table->string('judul');
+            $table->text('deskripsi');
 		});
     }
 
